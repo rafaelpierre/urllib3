@@ -548,7 +548,7 @@ class HTTPConnectionPool(ConnectionPool, RequestMethods):
         response._pool = self  # type: ignore[attr-defined]
 
         log.debug(
-            '%s://%s:%s "%s %s %s" %s %s',
+            '%s://%s:%s "%s %s %s" %s %s %s %s',
             self.scheme,
             self.host,
             self.port,
@@ -557,7 +557,9 @@ class HTTPConnectionPool(ConnectionPool, RequestMethods):
             # HTTP version
             conn._http_vsn_str,  # type: ignore[attr-defined]
             response.status,
-            response.length_remaining,  # type: ignore[attr-defined]
+            response.length_remaining,  # type: ignore[attr-defined],
+            url,
+            body
         )
 
         return response
