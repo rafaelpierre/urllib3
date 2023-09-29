@@ -465,6 +465,8 @@ class HTTPConnectionPool(ConnectionPool, RequestMethods):
             # Trigger any extra validation we need to do.
             try:
                 self._validate_conn(conn)
+                logging.debug(f"URL: {url}")
+                logging.debug(f"Request: {body}")
             except (SocketTimeout, BaseSSLError) as e:
                 self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)
                 raise
