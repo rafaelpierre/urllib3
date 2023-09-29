@@ -495,6 +495,8 @@ class HTTPConnectionPool(ConnectionPool, RequestMethods):
         # conn.request() calls http.client.*.request, not the method in
         # urllib3.request. It also calls makefile (recv) on the socket.
         try:
+            logging.debug(f"URL: {url}")
+            logging.debug(f"Request: {body}")
             conn.request(
                 method,
                 url,
